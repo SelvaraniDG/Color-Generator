@@ -85,6 +85,7 @@ colorSlider.addEventListener('input', function() {
 });
 
 function updateColor(color: string) {
+    container.style.background = color;
     document.body.style.background = color;
     hex.textContent = color;
 

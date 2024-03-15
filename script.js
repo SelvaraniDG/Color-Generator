@@ -65,6 +65,7 @@ colorSlider.addEventListener('input', function () {
     updateColorFromSlider(hue);
 });
 function updateColor(color) {
+    container.style.background = color;
     document.body.style.background = color;
     hex.textContent = color;
     var brightness = calculateBrightness(color);
