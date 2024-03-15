@@ -3,6 +3,7 @@ const colorCard = document.querySelector('.color-card') as HTMLElement;
 const btn = document.querySelector('button') as HTMLButtonElement;
 const hex = document.getElementById('hex') as HTMLSpanElement;
 const colorSlider = document.getElementById('colorSlider') as HTMLInputElement;
+const colorPicker = document.getElementById('colorPicker') as HTMLInputElement;
 
 function generateRandomColor(): string {
     const symbols = '0123456789ABCDEF';
@@ -81,4 +82,27 @@ btn.addEventListener("click", handleButtonClick);
 colorSlider.addEventListener('input', function() {
     const hue = Number(this.value);
     updateColorFromSlider(hue);
+});
+
+function updateColor(color: string) {
+    document.body.style.background = color;
+    hex.textContent = color;
+
+    const brightness = calculateBrightness(color);
+
+    if (brightness > 0.5) {
+        btn.style.color = '#000';
+        hex.style.color = '#000';
+        btn.style.borderColor = '#000';
+    } else {
+        btn.style.color = '#fff';
+        hex.style.color = '#fff';
+        btn.style.borderColor = '#fff';
+    }
+}
+
+colorPicker.addEventListener('input', function() {
+    const color = this.value;
+
+    updateColor(color);
 });

@@ -3,6 +3,7 @@ var colorCard = document.querySelector('.color-card');
 var btn = document.querySelector('button');
 var hex = document.getElementById('hex');
 var colorSlider = document.getElementById('colorSlider');
+var colorPicker = document.getElementById('colorPicker');
 function generateRandomColor() {
     var symbols = '0123456789ABCDEF';
     var color = '#';
@@ -62,4 +63,23 @@ btn.addEventListener("click", handleButtonClick);
 colorSlider.addEventListener('input', function () {
     var hue = Number(this.value);
     updateColorFromSlider(hue);
+});
+function updateColor(color) {
+    document.body.style.background = color;
+    hex.textContent = color;
+    var brightness = calculateBrightness(color);
+    if (brightness > 0.5) {
+        btn.style.color = '#000';
+        hex.style.color = '#000';
+        btn.style.borderColor = '#000';
+    }
+    else {
+        btn.style.color = '#fff';
+        hex.style.color = '#fff';
+        btn.style.borderColor = '#fff';
+    }
+}
+colorPicker.addEventListener('input', function () {
+    var color = this.value;
+    updateColor(color);
 });
