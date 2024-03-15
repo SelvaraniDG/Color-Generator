@@ -4,6 +4,7 @@ var btn = document.querySelector('button');
 var hex = document.getElementById('hex');
 var colorSlider = document.getElementById('colorSlider');
 var colorPicker = document.getElementById('colorPicker');
+var colorSelect = document.getElementById('colorSelect');
 function generateRandomColor() {
     var symbols = '0123456789ABCDEF';
     var color = '#';
@@ -81,6 +82,10 @@ function updateColor(color) {
     }
 }
 colorPicker.addEventListener('input', function () {
+    var color = this.value;
+    updateColor(color);
+});
+colorSelect.addEventListener('change', function () {
     var color = this.value;
     updateColor(color);
 });

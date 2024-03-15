@@ -4,6 +4,8 @@ const btn = document.querySelector('button') as HTMLButtonElement;
 const hex = document.getElementById('hex') as HTMLSpanElement;
 const colorSlider = document.getElementById('colorSlider') as HTMLInputElement;
 const colorPicker = document.getElementById('colorPicker') as HTMLInputElement;
+const colorSelect = document.getElementById('colorSelect') as HTMLSelectElement;
+
 
 function generateRandomColor(): string {
     const symbols = '0123456789ABCDEF';
@@ -105,5 +107,10 @@ function updateColor(color: string) {
 colorPicker.addEventListener('input', function() {
     const color = this.value;
 
+    updateColor(color);
+});
+
+colorSelect.addEventListener('change', function() {
+    const color = this.value;
     updateColor(color);
 });
